@@ -19,3 +19,7 @@
   copy:
     src: ../assets/README.md
     dest: /mnt/assetsbuild
+- name: unmount volume
+  ansible.posix.mount:
+    path: /mnt/assetsbuild
+    state: unmounted
