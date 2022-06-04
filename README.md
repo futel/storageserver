@@ -9,7 +9,7 @@ This is probably only needed once?
 
     packer init deploy/deploy_template.pkr.hcl
 
-Validate requirements and configuration locally
+## Validate requirements and configuration locally
 
     ansible-playbook -i deploy/hosts deploy/requirements_conf_prod_playbook.yml
     packer validate -var-file=conf/variables.pkr.hcl deploy/deploy_template.pkr.hcl
