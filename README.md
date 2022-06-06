@@ -19,10 +19,6 @@
     ansible-playbook -i deploy/hosts deploy/deploy_playbook.yml --vault-password-file=conf/vault_pass_digitalocean.txt
     ansible-playbook -i deploy/hosts deploy/provision_playbook.yml
 
-XXX from here
-
-    packer build -var-file=conf/variables.pkr.hcl deploy/deploy_template.pkr.hcl
-
 ## Create snapshot of volume and clean up
 
 - In digitalocean console, create snapshot of assetsbuild volume with default name.
