@@ -1,0 +1,19 @@
+---
+# user setup
+- name: add futel user
+  user:
+    name: futel
+    append: yes
+    groups: wheel
+- name: set up authorized key for futel user
+  authorized_key:
+    user: futel
+    key: "{{ item }}"
+    exclusive: yes
+  with_file:
+    - "{{ src }}/id_rsa.pub"
+- name: allow nopasswd sudo for futel user
+  copy:
+    src: "{{ src }}/futel"
+    dest: /etc/sudoers.d/futel
+    mode: "u=r"

@@ -1,0 +1,5 @@
+---
+- hosts: digitalocean
+  tasks:
+    - include: deploy_digitalocean.yml
+    - include: dns.yml
