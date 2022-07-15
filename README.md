@@ -22,9 +22,8 @@
 ## Create snapshot of volume and clean up
 
 - In digitalocean console, create snapshot of assetsbuild volume with default name.
-- In digitalocean console, destroy assetsbuild volume.
+- In digitalocean console, destroy assetsbuild.phu73l.net droplet and the associated assetsbuild volume.
 - In digitalocean console, destroy all assetsbuild volume snapshots but most recent.
-- In digitalocean console, destroy assetsbuild.phu73l.net droplet.
 
 ## Notes
 
