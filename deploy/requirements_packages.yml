@@ -1,0 +1,16 @@
+---
+- name: have apt packages
+  apt:
+    name:
+      - libgsl-dev
+      - ruby-dev
+      - normalize-audio
+      - sndfile-programs
+      - libsox-fmt-mp3
+      - sox
+      - lame
+- name: have gem packages
+  gem:
+    name: sndfile
+    state: present
+    norc: true

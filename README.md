@@ -1,15 +1,32 @@
+# Build assets storage on Digital Ocean
+
+## Steps
+
+- Validate, etc.
+- Update assets
+- Create droplet, volume
+- Create volume snapshot
+- Clean up everything but volume snapshot
+
 ## Requirements
 
-- Have assets subdirectory populated with assets.
 - Don't have any volumes named assetsbuild.
 - Don't have any droplets named assetsbuild.phu73l.net.
 
 ## Validate requirements and configuration locally
 
-    ansible-playbook -i deploy/hosts deploy/requirements_conf_prod_playbook.yml
+    ansible-playbook -i deploy/hosts deploy/requirements_conf_playbook.yml
+    ansible-playbook -K -i deploy/hosts deploy/requirements_packages_playbook.yml    
+
+## Update assets
+
+Checkout the content repository into the assets subdirectory.
+
+https://gitlab.com/futel/futel-content
 
 ## Build volume
 
+    ansible-playbook -i deploy/hosts deploy/update_assets_playbook.yml
     ansible-playbook -i deploy/hosts deploy/deploy_digitalocean_playbook.yml --vault-password-file=conf/vault_pass_digitalocean.txt
 
 - Note IP address printed.
@@ -23,7 +40,9 @@
 
 - In digitalocean console, create snapshot of assetsbuild volume with default name.
 - In digitalocean console, destroy assetsbuild.phu73l.net droplet and the associated assetsbuild volume.
-- In digitalocean console, destroy all assetsbuild volume snapshots but most recent.
+- In digitalocean console, destroy old assetsbuild volume snapshots.
+  - Keep the most recent (which we just created), we will attach it to the next stage/prod.
+  - Keep the most recent before that as a backup.
 
 ## Notes
 

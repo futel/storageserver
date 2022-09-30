@@ -1,0 +1,50 @@
+---
+- name: load conf
+  include_vars: "conf.yml"
+- name: clean sounds directories
+  file:
+    path: "{{ asterisk_sound_directory }}"
+    state: absent
+- name: clean sounds directories
+  file:
+    path: "{{ asterisk_sound_directory }}"
+    state: directory
+- name: update and copy sounds
+  command: ruby scripts/update_audio_assets.rb {{ asterisk_sound_directory }}/{{ item }} {{ asset_directory }}/{{ item }}
+  with_items:
+    - futel/church-of-robotron
+    - futel/conversations
+    - futel/longmont
+    - futel/oracle-dead-interstitial-long
+    - futel/oracle-dead-interstitial-short
+    - futel/oracle-dead-oracle
+    - futel/sequence-challenge
+    - futel/wildcard-line
+    - futel/williams-long
+    - futel/williams-short
+    - en/statements/anzie-wumpus
+    - en/statements/challenge
+    - en/statements/conversations
+    - en/statements/karl-oracle-dead
+    - en/statements/karl_quuux
+    - en/statements/karl-robotron
+    - en/statements/karl-voicemail-ivr
+    - en/statements/karl-wildcard-line
+    - en/statements/konami
+    - en/statements/rose-bar
+    - en/statements/rose-foo
+    - en/statements/sailor
+    - en/statements/tishbite
+    - en/statements/tishbite-wait
+    - en/futelconf
+    - es/statements/sailor
+    - es/statements/sofia-community
+    - es/statements/sofia-community-service
+    - es/statements/sofia-directory
+    - es/statements/sofia-general
+    - es/statements/sofia-incoming
+    - es/statements/sofia-information
+    - es/statements/sofia-network
+    - es/statements/sofia-outgoing
+    - es/statements/sofia-utilities
+    - es/statements/sofia-voicemail

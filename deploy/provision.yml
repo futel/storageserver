@@ -1,4 +1,6 @@
 ---
+- name: load conf
+  include_vars: "conf.yml"
 # see also https://gist.github.com/charignon/72871fe890f4482ccd5bb9d6fd9afcdf
 - name: create filesystem on volume
   community.general.filesystem:
@@ -15,10 +17,82 @@
     fstype: ext4
     opts: discard,defaults,noatime
     state: mounted
-- name: copy XXX demo
+- name: make asset directories
+  file:
+    path: /mnt/assetsbuild/{{ item }}
+    state: directory
+  with_items:
+    - var
+    - var/lib
+    - var/lib/asterisk
+    - var/lib/asterisk/sounds
+    - var/lib/asterisk/sounds/en
+    - var/lib/asterisk/sounds/en/statements
+    - var/lib/asterisk/sounds/es
+    - var/lib/asterisk/sounds/es/statements
+    - var/lib/asterisk/moh
+- name: copy futel sounds
   copy:
-    src: ../assets/README.md
-    dest: /mnt/assetsbuild
+    src: "{{ asterisk_sound_directory }}/futel/{{ item }}"
+    dest: /mnt/assetsbuild/var/lib/asterisk/sounds/futel
+  with_items:    
+    - williams-short
+    - williams-long
+    - oracle-dead-interstitial-short
+    - oracle-dead-interstitial-long
+    - oracle-dead-oracle
+    - wildcard-line
+    - church-of-robotron
+    - conversations
+    - longmont
+    - sequence-challenge
+- name: copy en statement sounds
+  copy:
+    src: "{{ asterisk_sound_directory }}/en/statements/{{ item }}"
+    dest: /mnt/assetsbuild/var/lib/asterisk/sounds/en/statements
+  with_items:
+    - anzie-wumpus
+    - challenge
+    - conversations
+    - karl-oracle-dead
+    - karl_quuux
+    - konami
+    - karl-robotron
+    - karl-voicemail-ivr
+    - karl-wildcard-line
+    - rose-bar
+    - rose-foo
+    - sailor
+    - tishbite
+    - tishbite-wait
+- name: copy es statement sounds
+  copy:
+    src: "{{ asterisk_sound_directory }}/es/statements/{{ item }}"  
+    dest: /mnt/assetsbuild/var/lib/asterisk/sounds/es/statements
+  with_items:
+    - sailor
+    - sofia-community
+    - sofia-community-service
+    - sofia-directory
+    - sofia-general
+    - sofia-incoming
+    - sofia-information
+    - sofia-network
+    - sofia-outgoing
+    - sofia-utilities
+    - sofia-voicemail
+- name: copy en asterisk confbridge menu sounds
+  copy:
+    src: "{{ asterisk_sound_directory }}/en/futelconf"
+    dest: /mnt/assetsbuild/var/lib/asterisk/sounds/en
+- name: copy hold music
+  copy:
+    src: ../src/var/lib/asterisk/moh/{{ item }}/
+    dest: /mnt/assetsbuild/var/lib/asterisk/moh/{{ item }}
+  with_items:
+    - hold
+    - operator
+    - midi
 - name: unmount volume
   ansible.posix.mount:
     path: /mnt/assetsbuild
