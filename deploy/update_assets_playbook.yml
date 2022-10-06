@@ -2,3 +2,4 @@
 - hosts: localhost
   tasks:
     - include: update_assets.yml
+    - include: package.yml

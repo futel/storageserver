@@ -3,8 +3,8 @@
 ## Steps
 
 - Validate, etc.
-- Update assets
-- Create droplet, volume
+- Update asset source
+- Create asset package, droplet, volume
 - Create volume snapshot
 - Clean up everything but volume snapshot
 
@@ -18,13 +18,13 @@
     ansible-playbook -i deploy/hosts deploy/requirements_conf_playbook.yml
     ansible-playbook -K -i deploy/hosts deploy/requirements_packages_playbook.yml    
 
-## Update assets
+## Update asset source
 
 Checkout the content repository into the assets subdirectory.
 
 https://gitlab.com/futel/futel-content
 
-## Build volume
+## Create asset package, droplet, volume
 
     ansible-playbook -i deploy/hosts deploy/update_assets_playbook.yml
     ansible-playbook -i deploy/hosts deploy/deploy_digitalocean_playbook.yml --vault-password-file=conf/vault_pass_digitalocean.txt
