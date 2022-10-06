@@ -1,3 +1,4 @@
 ---
 asset_directory: '../assets/sounds'
 asterisk_sound_directory: '../src/opt/futel/sounds'
+asterisk_moh_directory: '../src/var/lib/asterisk/moh'
