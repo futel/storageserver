@@ -33,7 +33,7 @@
     - var/lib/asterisk/moh
 - name: copy futel sounds
   copy:
-    src: "{{ asterisk_sound_directory }}/futel/{{ item }}"
+    src: "{{ asterisk_sound_directory }}/var/lib/asterisk/sounds/futel/{{ item }}"
     dest: /mnt/assetsbuild/var/lib/asterisk/sounds/futel
   with_items:    
     - williams-short
@@ -48,7 +48,7 @@
     - sequence-challenge
 - name: copy en statement sounds
   copy:
-    src: "{{ asterisk_sound_directory }}/en/statements/{{ item }}"
+    src: "{{ asterisk_sound_directory }}/var/lib/asterisk/sounds/en/statements/{{ item }}"
     dest: /mnt/assetsbuild/var/lib/asterisk/sounds/en/statements
   with_items:
     - anzie-wumpus
@@ -67,7 +67,7 @@
     - tishbite-wait
 - name: copy es statement sounds
   copy:
-    src: "{{ asterisk_sound_directory }}/es/statements/{{ item }}"  
+    src: "{{ asterisk_sound_directory }}/var/lib/asterisk/sounds/es/statements/{{ item }}"
     dest: /mnt/assetsbuild/var/lib/asterisk/sounds/es/statements
   with_items:
     - sailor
@@ -83,12 +83,12 @@
     - sofia-voicemail
 - name: copy en asterisk confbridge menu sounds
   copy:
-    src: "{{ asterisk_sound_directory }}/en/futelconf"
+    src: "{{ asterisk_sound_directory }}/var/lib/asterisk/sounds/en/futelconf"
     dest: /mnt/assetsbuild/var/lib/asterisk/sounds/en
 - name: copy hold music
   copy:
-    src: "{{ asterisk_moh_directory }}/{{ item }}/"
-    dest: /mnt/assetsbuild/var/lib/asterisk/moh/{{ item }}
+    src: "{{ src }}/var/lib/asterisk/moh/{{ item }}"
+    dest: /mnt/assetsbuild/var/lib/asterisk/moh
   with_items:
     - hold
     - operator
