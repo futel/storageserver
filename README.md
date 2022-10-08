@@ -20,7 +20,7 @@
 
 ## Update asset source
 
-Checkout the content repository into the assets subdirectory.
+Checkout the content repository into the assets subdirectory, or update it to the latest revision.
 
 https://gitlab.com/futel/futel-content
 
@@ -51,16 +51,6 @@ community.digitalocean.digital_ocean_snapshot is the ansible collection to snaps
 volume snapshot downgrade:
 - check out appropriate release to match asteriskserver
 - create volume snapshot
-
-asteriskserver stage deploy:
-- create, provision, etc droplet
-- list assetsbuild volume snapshots, find most recent
-- create, mount assets volume from assetsbuild snapshot
-
-asterisksever stage promote:
-- decommission, delete etc futel-prod-back droplet
-- destroy assets volume mounted to futel-prod-back
-- delete all assetsbuild volume snapshots but most recent
 
 asteriskserver prod downgrade:
 - make snapshot of current futel-prod droplet
