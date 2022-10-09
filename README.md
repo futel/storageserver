@@ -40,9 +40,11 @@ https://gitlab.com/futel/futel-content
 
 - In digitalocean console, create snapshot of assetsbuild volume with default name.
 - In digitalocean console, destroy assetsbuild.phu73l.net droplet and the associated assetsbuild volume.
+- In digitalocean console, destroy old assetsbuild.phu73l.net domain name.
 - In digitalocean console, destroy old assetsbuild volume snapshots.
   - Keep the most recent (which we just created), we will attach it to the next stage/prod.
   - Keep the most recent before that as a backup.
+
 
 ## Notes
 
