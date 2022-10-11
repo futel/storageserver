@@ -3,5 +3,5 @@
   include_vars: "conf.yml"
 - name: create package
   ansible.builtin.command:
-    cmd: tar -czvf ../assets.tgz {{ asterisk_sound_directory }} {{ src }}/var
-    creates: assets.tgz
+    cmd: tar -czvf ../assets.tgz {{ asterisk_sound_directory }}
+    creates: ../assets.tgz
