@@ -87,7 +87,7 @@
     dest: /mnt/assetsbuild/var/lib/asterisk/sounds/en
 - name: copy hold music
   copy:
-    src: "{{ src }}/var/lib/asterisk/moh/{{ item }}"
+    src: "{{ asterisk_sound_directory }}/var/lib/asterisk/moh/{{ item }}"
     dest: /mnt/assetsbuild/var/lib/asterisk/moh
   with_items:
     - hold

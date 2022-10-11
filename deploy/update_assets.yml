@@ -48,3 +48,11 @@
     - var/lib/asterisk/sounds/es/statements/sofia-outgoing
     - var/lib/asterisk/sounds/es/statements/sofia-utilities
     - var/lib/asterisk/sounds/es/statements/sofia-voicemail
+- name: copy hold music
+  copy:
+    src: "{{ asset_directory }}/{{ item }}"
+    dest: "{{ asterisk_sound_directory }}/{{ item }}"
+  with_items:
+    - var/lib/asterisk/moh/hold
+    - var/lib/asterisk/moh/operator
+    - var/lib/asterisk/moh/midi
