@@ -51,7 +51,7 @@
 - name: copy hold music
   copy:
     src: "{{ asset_directory }}/{{ item }}"
-    dest: "{{ asterisk_sound_directory }}/{{ item }}"
+    dest: "{{ asterisk_sound_directory }}/var/lib/asterisk/moh"
   with_items:
     - var/lib/asterisk/moh/hold
     - var/lib/asterisk/moh/operator
