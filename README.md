@@ -24,9 +24,14 @@ Checkout the content repository into the assets subdirectory, or update it to th
 
 https://gitlab.com/futel/futel-content
 
-## Create asset package, droplet, volume
+## Update assets and create asset package
+
+The package created in this step is used for the virtualbox asteriskserver build.
 
     ansible-playbook -i deploy/hosts deploy/update_assets_playbook.yml
+
+## Create droplet, volume
+
     ansible-playbook -i deploy/hosts deploy/deploy_digitalocean_playbook.yml --vault-password-file=conf/vault_pass_digitalocean.txt
 
 - Note IP address printed.
